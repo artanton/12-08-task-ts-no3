@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
 import { VscTrash } from 'react-icons/vsc';
-import { formatToString} from 'helper/helper';
+import { formatToString} from '../../helper/helper';
 
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import { DeleteConfirmationModal } from 'components/modal/deleteModal/deleteModalWindow';
-import { EditTaskModal } from 'components/modal/editModal/editModal';
-import { AddSubTaskModal } from 'components/modal/addSubTaskModal/addSubtaskModal';
+import { DeleteConfirmationModal } from '../../components/modal/deleteModal/deleteModalWindow';
+import { EditTaskModal } from '../../components/modal/editModal/editModal';
+import { AddSubTaskModal } from '../../components/modal/addSubTaskModal/addSubtaskModal';
 
-import { Modal } from 'components/modal/modalWindow';
+import { Modal } from '../../components/modal/modalWindow';
 import { AddSubTaskButton, DeleteButton, EditButton, TaskRow } from './taskItemStyled';
 
 

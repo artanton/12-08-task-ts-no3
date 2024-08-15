@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { TaskItem } from '../taskItem/taskItem';
 import { TasksList } from './taskListStyled';
 import { selectTask } from '../../redux/selectors';
-import { getColorForLevel, groupTasksByParentId, rootEl } from 'helper/helper';
+import { getColorForLevel, groupTasksByParentId, rootEl } from '../../helper/helper';
 
 // Рекурсивная функция для отображения задач и их подзадач
 const renderTasks = (tasks, taskMap, level = 0) => {
