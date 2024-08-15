@@ -8,23 +8,9 @@ import { ModalButton } from './modalStyledWindow';
 
 export const DeleteConfirmationModal = ({ taskId, onClose }) => {
   const dispatch = useDispatch();
+  // console.log(typeof (taskId));
 
-  // const dispatch = useDispatch();
-  // const tasks = useSelector(selectTask);
-  // const taskMap = groupTasksByParentId(tasks);
 
-  // const deleteTaskChain = taskId => {
-  //   if (taskMap[taskId]) {
-  //     taskMap[taskId].forEach(subtask => deleteTaskChain(subtask._id));
-  //   }
-
-  //   dispatch(deleteTask(taskId));
-  // };
-
-  // const handleDelete = () => {
-  //   deleteTaskChain(taskId);
-  //   onClose();
-  // };
   const handleDelete = async () => {
     try {
       await dispatch(deleteTask(taskId)).unwrap();
