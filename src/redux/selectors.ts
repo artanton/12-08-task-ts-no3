@@ -1,12 +1,15 @@
 // import { createSelector } from '@reduxjs/toolkit';
 
-export const selectTask = state => state.task.tasks;
+import { RootState } from "./store";
+
+export const selectTask =( state: RootState )=> state.task.tasks;
+
 
 // export const selectFilter = state => state.filt.filter;
 
-export const selectIsLoading = state => state.task.isLoading;
+export const selectIsLoading =( state: RootState ) => state.task.isLoading;
 
-export const selectError = state => state.task.error;
+export const selectError = ( state: RootState ) => state.task.error;
 
 // export const selectSearchedContacts = createSelector(
 //   [selectTask, selectFilter],

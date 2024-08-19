@@ -3,16 +3,17 @@ import { TaskList } from '../components/taskList/taskList';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTask, selectError, selectIsLoading } from '../redux/selectors';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { fetchTasks } from '../redux/operators';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
 import TemporaryDrawer from '../components/swipeableEdgeDrawer/SwipeableEdgeDrawer';
 import { Container, DrawlerBtn, Loader } from './AppStyled';
+import { AppDispatch } from '../redux/store';
 
-export const App = () => {
+export const App:FC = () => {
   const allTasks = useSelector(selectTask);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 

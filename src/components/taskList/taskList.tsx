@@ -3,9 +3,12 @@ import { TaskItem } from '../taskItem/taskItem';
 import { TasksList } from './taskListStyled';
 import { selectTask } from '../../redux/selectors';
 import { getColorForLevel, groupTasksByParentId, rootEl } from '../../helper/helper';
+import { Task } from '../../App/App.types';
+import { FC } from 'react';
 
 // Рекурсивная функция для отображения задач и их подзадач
-const renderTasks = (tasks, taskMap, level = 0) => {
+
+const renderTasks = (tasks:Task[], taskMap:Record<string, Task[]>, level = 0):JSX.Element => {
   return (
     <ul>
       {tasks.map(task => (
@@ -19,11 +22,11 @@ const renderTasks = (tasks, taskMap, level = 0) => {
   );
 };
 
-export const TaskList = () => {
+export const TaskList:FC = () => {
   const tasks = useSelector(selectTask);
   const taskMap = groupTasksByParentId(tasks);
 
-  const topLevelTasks = taskMap[rootEl(tasks)] || [];
+  const topLevelTasks = taskMap[rootEl(tasks)|| ""] || [];
 
   return <TasksList>{renderTasks(topLevelTasks, taskMap)}</TasksList>;
 };

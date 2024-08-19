@@ -1,9 +1,12 @@
 // import { useDispatch } from 'react-redux';
 // import { updateTask } from '../../../redux/operators';
 // import { ModalButton, TextInput } from './editModalStyled';
+import { IaddSubTaskModal } from '../../../App/App.types';
 import { TaskForm } from '../../taskForm/taskForm';
 
-export const AddSubTaskModal = ({ taskId, onClose, subLevel, }) => {
+
+
+export const AddSubTaskModal:React.FC<IaddSubTaskModal> = ({ _id, onClose, subLevel, }) => {
  
 
   return (
@@ -16,7 +19,7 @@ export const AddSubTaskModal = ({ taskId, onClose, subLevel, }) => {
         Add SubTask
       </h2>
 
-      <TaskForm parentId ={ taskId} onClose={onClose} subLevel={subLevel} />
+      <TaskForm parentId ={ _id} onClose={onClose} subLevel={subLevel} />
     </div>
   );
 };

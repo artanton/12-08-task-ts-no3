@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { App } from './App/App.jsx';
+import { App } from './App/App';
 
 import { ThemeProvider } from 'styled-components';
-import { theme } from './globalStylization/Theme.js';
+import { theme } from './globalStylization/Theme';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 

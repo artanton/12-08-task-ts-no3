@@ -4,12 +4,12 @@ import { ModalButton, TextInput } from './editModalStyled';
 import { useState } from 'react';
 
 
-export const EditTaskModal = ({ taskId, initialText, onClose }) => {
+export const EditTaskModal = ({ _id, initialText, onClose }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState(initialText);
 
   const handleUpdate = () => {
-    dispatch(updateTask({ taskId, text }));
+    dispatch(updateTask({ _id, text }));
     onClose();
   };
 

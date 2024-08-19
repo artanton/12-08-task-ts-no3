@@ -1,6 +1,8 @@
+import type { Task } from "../App/App.types";
+
 //  parentId grouping func
-export const groupTasksByParentId = tasks => {
-  const taskMap = {};
+export const groupTasksByParentId = (tasks:Task[]):Record<string, Task[]> => {
+  const taskMap:Record<string, Task[]> = {};
   tasks.forEach(task => {
     if (!taskMap[task.parentId]) {
       taskMap[task.parentId] = [];
@@ -12,7 +14,7 @@ export const groupTasksByParentId = tasks => {
 
 //  time formatting func
 
-export function formatToString(date) {
+export function formatToString(date:string):string {
   const actualDate = new Date(date);
 
   actualDate.setMilliseconds(0);
@@ -35,7 +37,7 @@ export function formatToString(date) {
 //     .toString(16)
 //     .padStart(6, 0)}`;
 // }
-export function getRandomHexColor() {
+export function getRandomHexColor():string {
   
   const getRandomChannelValue = () => Math.floor(Math.random() * 128) + 128;
 
@@ -45,7 +47,7 @@ export function getRandomHexColor() {
   const b = getRandomChannelValue();
 
   // Преобразование в формат HEX
-  const rgbToHex = (r, g, b) => `#${[r, g, b]
+  const rgbToHex = (r:number, g:number, b:number):string => `#${[r, g, b]
     .map(value => value.toString(16).padStart(2, '0'))
     .join('')}`;
 
@@ -54,25 +56,25 @@ export function getRandomHexColor() {
 
 //  unic colors for subtask level assignment func
 
-const colorMap = {};
+const colorMap: Record<number, string> = {};
 
-export const getColorForLevel = level => {
+export const getColorForLevel = (level:number):string => {
   if (!colorMap[level]) {
     colorMap[level] = getRandomHexColor();
   }
-
+ 
   return colorMap[level];
 };
 
 
 //  root perent element searching func
 
-export const rootEl = tasks => {
-  const idArr = [];
-  tasks.forEach(task => {
+export const rootEl =( tasks:Task[]):string|null => {
+  const idArr:string[] = [];
+  tasks.forEach((task:Task) => {
     idArr.push(task.parentId);
   });
-  idArr.sort((a, b) => a - b);
+  idArr.sort((a, b) => a.localeCompare(b));
 
   return idArr[0] !== undefined ? idArr[0] : null;
 };

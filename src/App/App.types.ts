@@ -13,19 +13,17 @@ export  interface State {
     error: null|string|unknown;
   };
 
-  export interface UpdateTaskPayload {
-    taskId: string;
-    text: string;
-  };
+  export interface TaskItemProp {
+    task: Omit <Task , "parentId">
+    color:string;
+  }
 
-  export interface CreateTaskPayload {
-   
-     text: string;
-     date: string;
-     parentId: string;
-     subLevel: number;
-  };
+  export interface IaddSubTaskModal extends Pick<Task, "_id" | "subLevel">{
+    
+    onClose:()=> void
+  }
 
+ 
 
 
 

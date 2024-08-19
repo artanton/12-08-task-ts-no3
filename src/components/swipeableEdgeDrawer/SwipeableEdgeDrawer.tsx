@@ -1,15 +1,17 @@
 import { TaskForm } from '../taskForm/taskForm';
 
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 
-export default function TemporaryDrawer() {
-  const [open, setOpen] = useState(false);
 
-  const toggleDrawer = newOpen => () => {
+
+const  TemporaryDrawer:FC =()=> {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const toggleDrawer = (newOpen:boolean) => () => {
     setOpen(newOpen);
   };
 
@@ -36,3 +38,5 @@ export default function TemporaryDrawer() {
     </div>
   );
 }
+export default TemporaryDrawer
+
