@@ -6,12 +6,13 @@ import { formatToString} from '../../helper/helper';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import { DeleteConfirmationModal } from '../../components/modal/deleteModal/deleteModalWindow';
-import { EditTaskModal } from '../../components/modal/editModal/editModal';
-import { AddSubTaskModal } from '../../components/modal/addSubTaskModal/addSubtaskModal';
+import { DeleteConfirmationModal } from '../modal/deleteModal/deleteModalWindow';
+import { EditTaskModal } from '../modal/editModal/editModal';
+import { AddSubTaskModal } from '../modal/addSubTaskModal/addSubtaskModal';
 
-import { Modal } from '../../components/modal/modalWindow';
+import { Modal } from '../modal/modalWindow';
 import { AddSubTaskButton, DeleteButton, EditButton, TaskRow } from './taskItemStyled';
+import { TaskItemProp } from '../../App/App.types';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,10 +24,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
-export const TaskItem = ({ task, color }) => {
-  const { _id, text, date, parentId, subLevel } = task;
+
+
+export const TaskItem: React.FC<TaskItemProp>  = ({task, color}) => {
+  const { _id, text, date, subLevel } = task;
   const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
 
   const formattedDate = formatToString(date);
     
@@ -39,21 +42,24 @@ export const TaskItem = ({ task, color }) => {
 
   const openSubTaskModal = () => {
     setModalContent(
-      <AddSubTaskModal  taskId={_id} parentId = {parentId} subLevel={subLevel} onClose={closeModal} />
+      <AddSubTaskModal
+      _id = {_id} 
+      subLevel ={subLevel} 
+      onClose ={closeModal} />
     );
     openModal();
   };
 
   const openEditModal = () => {
     setModalContent(
-      <EditTaskModal taskId={_id} initialText={text} onClose={closeModal} />
+      <EditTaskModal _id={_id} initialText={text} onClose={closeModal} />
     );
     openModal();
   };
 
   const openDeleteModal = () => {
     setModalContent(
-      <DeleteConfirmationModal taskId={_id} onClose={closeModal} />
+      <DeleteConfirmationModal _id={_id} onClose={closeModal} />
     );
     openModal();
   };

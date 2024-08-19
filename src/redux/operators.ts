@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { CreateTaskPayload, Task, UpdateTaskPayload } from '../App/App.types';
+import { Task} from '../App/App.types';
 
 
 axios.defaults.baseURL = 'https://recursive-todo-api.onrender.com/api';
 
 // axios.defaults.baseURL = 'https://668c2ba00b61b8d23b0ca4de.mockapi.io';
 
-export const fetchTasks = createAsyncThunk (
+export const fetchTasks = createAsyncThunk < Task[]> (
   'tasks/fetchAll',
   async (_, thunkAPI) => {
     try {
@@ -16,16 +16,17 @@ export const fetchTasks = createAsyncThunk (
       return response.data;
     } catch (e: unknown) {
       if (e instanceof Error) {
-      
+       
         return thunkAPI.rejectWithValue(e.message);
       } else {
-
+       
         return thunkAPI.rejectWithValue('An unknown error occurred');
       }
-    }}
+    }
+    }
 );
 
-export const addTask = createAsyncThunk<Task, CreateTaskPayload, { rejectValue: string }>(
+export const addTask = createAsyncThunk<Task, Partial<Task>, { rejectValue: string }>(
   'tasks/addTask',
   async ({ text, date, parentId, subLevel }, thunkAPI) => {
     try {
@@ -42,11 +43,11 @@ export const addTask = createAsyncThunk<Task, CreateTaskPayload, { rejectValue: 
     }}
 );
 
-export const deleteTask = createAsyncThunk(
+export const deleteTask = createAsyncThunk<  { _id: string; message: string }, Partial<Task>, { rejectValue: string }>(
   'tasks/deleteTask',
-  async (taskId:string, thunkAPI) => {
+  async (_id, thunkAPI) => {
     try {
-      const response = await axios.delete(`/tasks/${taskId}`);
+      const response = await axios.delete(`/tasks/${_id}`);
       return response.data;
     } catch (e: unknown) {
       if (e instanceof Error) {
@@ -59,13 +60,13 @@ export const deleteTask = createAsyncThunk(
     }}
 );
 
-export const updateTask = createAsyncThunk<Task, UpdateTaskPayload, { rejectValue: string }>(
+export const updateTask = createAsyncThunk<Task, Partial<Task>, { rejectValue: string }>(
   'tasks/updateTask',
 
-  async ({ taskId, text }, thunkAPI) => {
+  async ({ _id, text }, thunkAPI) => {
     
     try {
-      const response = await axios.put(`/tasks/${taskId}`, { text });
+      const response = await axios.put(`/tasks/${_id}`, { text });
       return response.data;
     } catch (e: unknown) {
       if (e instanceof Error) {

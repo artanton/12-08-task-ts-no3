@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import {
   Button,
@@ -9,8 +9,14 @@ import {
 } from './taskFormStyled';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../../redux/operators';
+import { Task } from '../../App/App.types';
+import { FC } from 'react';
+import { AppDispatch } from '../../redux/store';
 // import Notiflix from 'notiflix';
 
+interface TaskFormProp extends Partial <Task> {
+onClose: ()=> void;
+}
 
 
 
@@ -20,10 +26,10 @@ const taskSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const TaskForm = ({ parentId, subLevel, onClose }) => {  
-  const dispatchTask = useDispatch();
+export const TaskForm:FC<TaskFormProp> = ({ parentId, subLevel, onClose }) => {  
+  const dispatchTask = useDispatch<AppDispatch>();
 
-  const onAdd = (values, actions) => {
+  const onAdd = (values: { text: string, date:string}, actions: FormikHelpers<{ text: string , date:string}>) => {
     // if (values.text.includes('!')) {
     //   Notiflix.Notify.failure('The task field cannot contain "!" character.');
     //   return;
@@ -32,7 +38,7 @@ export const TaskForm = ({ parentId, subLevel, onClose }) => {
       parentId = "0";
       subLevel = 0 }
       else{
-       subLevel+=1; 
+       subLevel =(subLevel??0)+1; 
       };
     
     const newTask = {
@@ -54,7 +60,7 @@ export const TaskForm = ({ parentId, subLevel, onClose }) => {
     <Formik
       initialValues={{
         text: '',
-        date: new Date()
+        date: new Date().toString()
       }}
       validationSchema={taskSchema}
       onSubmit={onAdd}

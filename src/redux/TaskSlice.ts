@@ -85,15 +85,15 @@ const taskSlice = createSlice({
       .addCase(deleteTask.pending, state => {
         state.isLoading = true;
       })
-      .addCase(deleteTask.fulfilled, (state:State, action) => {
+      .addCase(deleteTask.fulfilled, (state: State, action: PayloadAction<{ _id: string; message: string }>) => {
         state.isLoading = false;
         state.error = null;
         console.log(action.payload);
-        console.log(typeof (action.payload));
+        console.log(typeof (action.payload._id));
         
         const index = state.tasks.findIndex(
         
-          tasks => tasks._id === action.payload.id
+          tasks => tasks._id === action.payload._id
         );
         state.tasks.splice(index, 1);
       })
