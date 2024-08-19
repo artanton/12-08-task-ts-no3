@@ -1,11 +1,14 @@
 import { useDispatch } from 'react-redux';
 import { updateTask } from '../../../redux/operators';
 import { ModalButton, TextInput } from './editModalStyled';
-import { useState } from 'react';
+import { FC, useState } from 'react';
+import { IeditTaskModal } from '../../../App/App.types';
+import { AppDispatch } from '../../../redux/store';
 
 
-export const EditTaskModal = ({ _id, initialText, onClose }) => {
-  const dispatch = useDispatch();
+
+export const EditTaskModal:FC< IeditTaskModal> = ({ _id, text:initialText, onClose }) => {
+  const dispatch = useDispatch<AppDispatch>();
   const [text, setText] = useState(initialText);
 
   const handleUpdate = () => {
@@ -13,7 +16,7 @@ export const EditTaskModal = ({ _id, initialText, onClose }) => {
     onClose();
   };
 
-  const handleChange = e => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>)=> {
     setText(e.target.value);
   };
 
@@ -23,9 +26,8 @@ export const EditTaskModal = ({ _id, initialText, onClose }) => {
 
       <form>
         <TextInput
-          name="text"
-          type="textarea"
-          rows="3"
+          name="text"        
+          rows={3}
           value={text}
           onChange={handleChange}
           placeholder="Insert edited task here"

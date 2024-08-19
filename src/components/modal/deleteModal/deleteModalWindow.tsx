@@ -1,19 +1,22 @@
 import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
+
 import { deleteTask, fetchTasks } from '../../../redux/operators';
-// import { groupTasksByParentId } from '../../../helper/helper';
+
 import { ModalButton } from './modalStyledWindow';
-
-// import { selectTask } from '../../../redux/selectors';
-
-export const DeleteConfirmationModal = ({ _id, onClose }) => {
-  const dispatch = useDispatch();
-  // console.log(typeof (taskId));
+import { FC } from 'react';
+import {IdeleteTaskModal } from '../../../App/App.types';
+import { AppDispatch } from '../../../redux/store';
 
 
-  const handleDelete = async () => {
+
+export const DeleteConfirmationModal:FC<IdeleteTaskModal> = ({ _id, onClose }) => {
+  const dispatch = useDispatch<AppDispatch>();
+ ;
+
+
+  const handleDelete = async ():Promise<void> => {
     try {
-      await dispatch(deleteTask(_id)).unwrap();
+      await dispatch(deleteTask({_id})).unwrap();
       
       dispatch(fetchTasks());
     } catch (error) {
