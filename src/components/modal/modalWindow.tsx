@@ -1,11 +1,12 @@
 import { CloseButton, ModalContent, ModalOverlay } from './modalWindowsStyled';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { MdClose } from 'react-icons/md';
+import { IgeneralModal } from '../../App/App.types';
 
 
-export const Modal = ({ isOpen, onClose, children }) => {
+export const Modal:FC<IgeneralModal> = ({ isOpen, onClose, children }) => {
   useEffect(() => {
-    const closeModalOnEsc = e => {
+    const closeModalOnEsc =( e:KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
       }
@@ -17,7 +18,7 @@ export const Modal = ({ isOpen, onClose, children }) => {
     };
   }, [onClose]);
 
-  const closeModalOnBackdrop = e => {
+  const closeModalOnBackdrop = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }

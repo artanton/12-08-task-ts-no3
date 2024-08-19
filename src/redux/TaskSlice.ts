@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { fetchTasks, deleteTask, addTask, updateTask } from './operators';
-import { State, Task } from '../App/App.types';
+import { IState, ITask } from '../App/App.types';
 // import { RootState } from './store';
 
 
 
-const initialState: State={
+const initialState: IState={
   tasks: [],
     isLoading: false,
     error: null,
@@ -25,15 +25,15 @@ const taskSlice = createSlice({
 
       // fetch
 
-      .addCase(fetchTasks.pending, (state:State) => {
+      .addCase(fetchTasks.pending, (state:IState) => {
         state.isLoading = true;
       })
-      .addCase(fetchTasks.fulfilled, (state:State, action: PayloadAction<Task[]>) => {
+      .addCase(fetchTasks.fulfilled, (state:IState, action: PayloadAction<ITask[]>) => {
         state.isLoading = false;
         state.error = null;
         state.tasks = action.payload;
       })
-      .addCase(fetchTasks.rejected, (state:State, action: PayloadAction<unknown>) => {
+      .addCase(fetchTasks.rejected, (state:IState, action: PayloadAction<unknown>) => {
         // console.log(typeof( action.payload));
         // console.log(action.payload);
         state.isLoading = false;
@@ -45,12 +45,12 @@ const taskSlice = createSlice({
       .addCase(addTask.pending, state => {
         state.isLoading = true;
       })
-      .addCase(addTask.fulfilled, (state:State, action: PayloadAction<Task>) => {
+      .addCase(addTask.fulfilled, (state:IState, action: PayloadAction<ITask>) => {
         state.isLoading = false;
         state.error = null;
         state.tasks.push(action.payload);
       })
-      .addCase(addTask.rejected, (state:State, action: PayloadAction<unknown>) => {
+      .addCase(addTask.rejected, (state:IState, action: PayloadAction<unknown>) => {
         state.isLoading = false;
         state.error = action.payload as string;
       })
@@ -60,7 +60,7 @@ const taskSlice = createSlice({
       .addCase(updateTask.pending, state => {
         state.isLoading = true;
       })
-      .addCase(updateTask.fulfilled, (state:State, action: PayloadAction<Task>) => {
+      .addCase(updateTask.fulfilled, (state:IState, action: PayloadAction<ITask>) => {
         state.isLoading = false;
         state.error = null;
         const { _id, text } = action.payload;
@@ -75,7 +75,7 @@ const taskSlice = createSlice({
           }
         }
       })
-      .addCase(updateTask.rejected, (state:State, action) => {
+      .addCase(updateTask.rejected, (state:IState, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
@@ -85,7 +85,7 @@ const taskSlice = createSlice({
       .addCase(deleteTask.pending, state => {
         state.isLoading = true;
       })
-      .addCase(deleteTask.fulfilled, (state: State, action: PayloadAction<{ _id: string; message: string }>) => {
+      .addCase(deleteTask.fulfilled, (state: IState, action: PayloadAction<{ _id: string; message: string }>) => {
         state.isLoading = false;
         state.error = null;
         console.log(action.payload);

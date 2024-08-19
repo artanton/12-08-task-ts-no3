@@ -1,8 +1,8 @@
-import type { Task } from "../App/App.types";
+import type { ITask } from "../App/App.types";
 
 //  parentId grouping func
-export const groupTasksByParentId = (tasks:Task[]):Record<string, Task[]> => {
-  const taskMap:Record<string, Task[]> = {};
+export const groupTasksByParentId = (tasks:ITask[]):Record<string, ITask[]> => {
+  const taskMap:Record<string, ITask[]> = {};
   tasks.forEach(task => {
     if (!taskMap[task.parentId]) {
       taskMap[task.parentId] = [];
@@ -69,9 +69,9 @@ export const getColorForLevel = (level:number):string => {
 
 //  root perent element searching func
 
-export const rootEl =( tasks:Task[]):string|null => {
+export const rootEl =( tasks:ITask[]):string|null => {
   const idArr:string[] = [];
-  tasks.forEach((task:Task) => {
+  tasks.forEach((task:ITask) => {
     idArr.push(task.parentId);
   });
   idArr.sort((a, b) => a.localeCompare(b));

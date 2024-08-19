@@ -12,7 +12,8 @@ import { AddSubTaskModal } from '../modal/addSubTaskModal/addSubtaskModal';
 
 import { Modal } from '../modal/modalWindow';
 import { AddSubTaskButton, DeleteButton, EditButton, TaskRow } from './taskItemStyled';
-import { TaskItemProp } from '../../App/App.types';
+import { ITaskItemProp } from '../../App/App.types';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,7 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-export const TaskItem: React.FC<TaskItemProp>  = ({task, color}) => {
+export const TaskItem: React.FC<ITaskItemProp>  = ({task, color}) => {
   const { _id, text, date, subLevel } = task;
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState<React.ReactNode | null>(null);
@@ -52,7 +53,7 @@ export const TaskItem: React.FC<TaskItemProp>  = ({task, color}) => {
 
   const openEditModal = () => {
     setModalContent(
-      <EditTaskModal _id={_id} initialText={text} onClose={closeModal} />
+      <EditTaskModal _id={_id} text={text} onClose={closeModal} />
     );
     openModal();
   };

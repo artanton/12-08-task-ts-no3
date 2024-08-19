@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Task} from '../App/App.types';
+import { ITask} from '../App/App.types';
 
 
 axios.defaults.baseURL = 'https://recursive-todo-api.onrender.com/api';
 
 // axios.defaults.baseURL = 'https://668c2ba00b61b8d23b0ca4de.mockapi.io';
 
-export const fetchTasks = createAsyncThunk < Task[]> (
+export const fetchTasks = createAsyncThunk < ITask[]> (
   'tasks/fetchAll',
   async (_, thunkAPI) => {
     try {
@@ -26,7 +26,7 @@ export const fetchTasks = createAsyncThunk < Task[]> (
     }
 );
 
-export const addTask = createAsyncThunk<Task, Partial<Task>, { rejectValue: string }>(
+export const addTask = createAsyncThunk<ITask, Partial<ITask>, { rejectValue: string }>(
   'tasks/addTask',
   async ({ text, date, parentId, subLevel }, thunkAPI) => {
     try {
@@ -43,7 +43,7 @@ export const addTask = createAsyncThunk<Task, Partial<Task>, { rejectValue: stri
     }}
 );
 
-export const deleteTask = createAsyncThunk<  { _id: string; message: string }, Partial<Task>, { rejectValue: string }>(
+export const deleteTask = createAsyncThunk<  { _id: string; message: string }, Partial<ITask>, { rejectValue: string }>(
   'tasks/deleteTask',
   async (_id, thunkAPI) => {
     try {
@@ -60,7 +60,7 @@ export const deleteTask = createAsyncThunk<  { _id: string; message: string }, P
     }}
 );
 
-export const updateTask = createAsyncThunk<Task, Partial<Task>, { rejectValue: string }>(
+export const updateTask = createAsyncThunk<ITask, Partial<ITask>, { rejectValue: string }>(
   'tasks/updateTask',
 
   async ({ _id, text }, thunkAPI) => {

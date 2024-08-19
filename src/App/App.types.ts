@@ -1,29 +1,37 @@
-export interface Task {
-    _id: string;
-     text: string;
-     date: string;
-     parentId: string;
-     subLevel: number;
-  };
-  
-  
-export  interface State {
-    tasks: Task[];
-    isLoading: boolean;
-    error: null|string|unknown;
-  };
+export interface ITask {
+  _id: string;
+  text: string;
+  date: string;
+  parentId: string;
+  subLevel: number;
+}
 
-  export interface TaskItemProp {
-    task: Omit <Task , "parentId">
-    color:string;
-  }
+export interface IState {
+  tasks: ITask[];
+  isLoading: boolean;
+  error: null | string | unknown;
+}
 
-  export interface IaddSubTaskModal extends Pick<Task, "_id" | "subLevel">{
-    
-    onClose:()=> void
-  }
+export interface ITaskItemProp {
+  task: Omit<ITask, 'parentId'>;
+  color: string;
+  children: React.ReactNode;
+}
 
- 
+export interface IgeneralModal {
+  onClose: () => void;
+  isOpen: boolean;
+  children: React.ReactNode;
+}
 
+export interface IaddSubTaskModal extends Pick<ITask, '_id' | 'subLevel'> {
+  onClose: () => void;
+};
 
+export interface IdeleteTaskModal extends Pick<ITask,'_id'>{
+  onClose: () => void;
+};
 
+export interface IeditTaskModal extends Pick<ITask, '_id'|'text'>{
+  onClose: ()=> void;
+}
