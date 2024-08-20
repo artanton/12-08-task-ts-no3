@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { FC } from 'react';
 
 import { MagnifyingGlass } from 'react-loader-spinner';
-import { Container, Loader } from './AppStyled';
+import { Container, Loader } from './AppLayoutStyled';
 
 export const AppLayout:FC = () => {
   return (

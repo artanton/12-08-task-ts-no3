@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DrawlerBtn = styled.div`
-  padding: 40px;
+  padding: 100px;
 `;
 
 export const Loader = styled.div`

@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 const styles = {
     container: {
       minHeight: 'calc(100vh - 50px)',
@@ -12,17 +14,18 @@ const styles = {
     },
   };
   
-  export default function NotFoundPage() {
+ const NotFoundPage:FC =()=>{
     return (
       <div style={styles.container}>
         <h1
           style={{
-            textAlign: ' center',
             fontSize: 48,
+            textAlign: 'center',
           }}
         >
           Error 404. Page not found
         </h1>
       </div>
     );
-  }
+  };
+  export default NotFoundPage;

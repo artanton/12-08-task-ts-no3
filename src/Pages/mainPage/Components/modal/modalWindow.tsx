@@ -1,7 +1,7 @@
 import { CloseButton, ModalContent, ModalOverlay } from './modalWindowsStyled';
 import { FC, useEffect } from 'react';
 import { MdClose } from 'react-icons/md';
-import { IgeneralModal } from '../../../../App.types';
+import { IgeneralModal } from '../../Task.types';
 
 
 export const Modal:FC<IgeneralModal> = ({ isOpen, onClose, children }) => {

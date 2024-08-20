@@ -8,7 +8,7 @@ import { fetchTasks } from '../../redux/operators';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
 import TemporaryDrawer from './Components/swipeableEdgeDrawer/SwipeableEdgeDrawer';
-import { Container, DrawlerBtn, Loader } from '../../AppStyled';
+import { Container,  DrawlerBtn,  Loader } from './TaskPageStyled';
 import { AppDispatch } from '../../redux/store';
 
 export const Home:FC = () => {
@@ -24,7 +24,7 @@ export const Home:FC = () => {
   return (
     <Container>
       
-      <DrawlerBtn><TemporaryDrawer /></DrawlerBtn>
+      <DrawlerBtn style={{ padding: "40px"}}><TemporaryDrawer /></DrawlerBtn>
 
         {isLoading && !error && (
           <Loader>
