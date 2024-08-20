@@ -7,7 +7,7 @@ import { FC } from 'react';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import { Container, Loader } from './AppLayoutStyled';
 
-export const AppLayout:FC = () => {
+export const AppLayout: FC = () => {
   return (
     <Container>
       <main>
