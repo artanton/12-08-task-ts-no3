@@ -12,7 +12,7 @@ import { AddSubTaskModal } from '../modal/addSubTaskModal/addSubtaskModal';
 
 import { Modal } from '../modal/modalWindow';
 import { AddSubTaskButton, DeleteButton, EditButton, TaskRow } from './taskItemStyled';
-import { ITaskItemProp } from '../../../../App.types';
+import { ITaskItemProp } from '../../Task.types';
 
 
 
