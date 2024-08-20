@@ -1,8 +1,6 @@
-// import { useDispatch } from 'react-redux';
-// import { updateTask } from '../../../redux/operators';
-// import { ModalButton, TextInput } from './editModalStyled';
+
 import { FC } from 'react';
-import { IaddSubTaskModal } from '../../../App/App.types';
+import { IaddSubTaskModal } from '../../../App.types';
 import { TaskForm } from '../../taskForm/taskForm';
 
 

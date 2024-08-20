@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 
-import { deleteTask, fetchTasks } from '../../../redux/operators';
+import { deleteTask, fetchTasks } from '../../../../../redux/operators';
 
 import { ModalButton } from './modalStyledWindow';
 import { FC } from 'react';
-import {IdeleteTaskModal } from '../../../App/App.types';
-import { AppDispatch } from '../../../redux/store';
+import {IdeleteTaskModal } from '../../../App.types';
+import { AppDispatch } from '../../../../../redux/store';
 
 
 

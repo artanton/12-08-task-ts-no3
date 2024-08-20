@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { VscTrash } from 'react-icons/vsc';
-import { formatToString} from '../../helper/helper';
+import { formatToString} from '../../../../helper/helper';
 
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
@@ -12,7 +12,7 @@ import { AddSubTaskModal } from '../modal/addSubTaskModal/addSubtaskModal';
 
 import { Modal } from '../modal/modalWindow';
 import { AddSubTaskButton, DeleteButton, EditButton, TaskRow } from './taskItemStyled';
-import { ITaskItemProp } from '../../App/App.types';
+import { ITaskItemProp } from '../../App.types';
 
 
 
