@@ -1,6 +1,6 @@
 
 import { FC } from 'react';
-import { IaddSubTaskModal } from '../../../App.types';
+import { IaddSubTaskModal } from '../../../../../App.types';
 import { TaskForm } from '../../taskForm/taskForm';
 
 

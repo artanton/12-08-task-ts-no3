@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { updateTask } from '../../../../../redux/operators';
 import { ModalButton, TextInput } from './editModalStyled';
 import { FC, useState } from 'react';
-import { IeditTaskModal } from '../../../App.types';
+import { IeditTaskModal } from '../../../../../App.types';
 import { AppDispatch } from '../../../../../redux/store';
 
 

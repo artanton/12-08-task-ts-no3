@@ -8,10 +8,10 @@ import { fetchTasks } from '../../redux/operators';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
 import TemporaryDrawer from './Components/swipeableEdgeDrawer/SwipeableEdgeDrawer';
-import { Container, DrawlerBtn, Loader } from './AppStyled';
+import { Container, DrawlerBtn, Loader } from '../../AppStyled';
 import { AppDispatch } from '../../redux/store';
 
-export const App:FC = () => {
+export const Home:FC = () => {
   const allTasks = useSelector(selectTask);
   const dispatch = useDispatch<AppDispatch>();
   const isLoading = useSelector(selectIsLoading);
