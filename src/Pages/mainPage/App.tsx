@@ -1,5 +1,5 @@
 import { GlobalStyle } from '../../globalStyles/GlobalStyle';
-import { TaskList } from './mainPageComponents/taskList/taskList';
+import { TaskList } from './Components/taskList/taskList';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTask, selectError, selectIsLoading } from '../../redux/selectors';
@@ -7,7 +7,7 @@ import { FC, useEffect } from 'react';
 import { fetchTasks } from '../../redux/operators';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
-import TemporaryDrawer from './mainPageComponents/swipeableEdgeDrawer/SwipeableEdgeDrawer';
+import TemporaryDrawer from './Components/swipeableEdgeDrawer/SwipeableEdgeDrawer';
 import { Container, DrawlerBtn, Loader } from './AppStyled';
 import { AppDispatch } from '../../redux/store';
 
