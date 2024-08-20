@@ -1,15 +1,15 @@
-import { GlobalStyle } from '../globalStylization/GlobalStyle';
-import { TaskList } from '../components/taskList/taskList';
+import { GlobalStyle } from '../../globalStyles/GlobalStyle';
+import { TaskList } from './mainPageComponents/taskList/taskList';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTask, selectError, selectIsLoading } from '../redux/selectors';
+import { selectTask, selectError, selectIsLoading } from '../../redux/selectors';
 import { FC, useEffect } from 'react';
-import { fetchTasks } from '../redux/operators';
+import { fetchTasks } from '../../redux/operators';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
-import TemporaryDrawer from '../components/swipeableEdgeDrawer/SwipeableEdgeDrawer';
+import TemporaryDrawer from './mainPageComponents/swipeableEdgeDrawer/SwipeableEdgeDrawer';
 import { Container, DrawlerBtn, Loader } from './AppStyled';
-import { AppDispatch } from '../redux/store';
+import { AppDispatch } from '../../redux/store';
 
 export const App:FC = () => {
   const allTasks = useSelector(selectTask);
