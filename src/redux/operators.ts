@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { ITask} from '../Pages/mainPage/App.types';
+import { ITask} from '../App.types';
 
 
 axios.defaults.baseURL = 'https://recursive-todo-api.onrender.com/api';

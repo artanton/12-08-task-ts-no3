@@ -4,7 +4,7 @@ import { deleteTask, fetchTasks } from '../../../../../redux/operators';
 
 import { ModalButton } from './modalStyledWindow';
 import { FC } from 'react';
-import {IdeleteTaskModal } from '../../../App.types';
+import {IdeleteTaskModal } from '../../../../../App.types';
 import { AppDispatch } from '../../../../../redux/store';
 
 

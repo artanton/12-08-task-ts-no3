@@ -9,7 +9,7 @@ import {
 } from './taskFormStyled';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../../../../redux/operators';
-import { ITask } from '../../App.types';
+import { ITask } from '../../../../App.types';
 import { FC } from 'react';
 import { AppDispatch } from '../../../../redux/store';
 // import Notiflix from 'notiflix';
