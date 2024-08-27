@@ -16,7 +16,7 @@ export const DeleteConfirmationModal:FC<IdeleteTaskModal> = ({ _id, onClose }) =
 
   const handleDelete = async ():Promise<void> => {
     try {
-      await dispatch(deleteTask({_id})).unwrap();
+      await dispatch(deleteTask(_id)).unwrap();
       
       dispatch(fetchTasks());
     } catch (error) {
