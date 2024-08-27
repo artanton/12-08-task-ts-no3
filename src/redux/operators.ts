@@ -44,7 +44,7 @@ export const addTask = createAsyncThunk<ITask, Partial<ITask>, { rejectValue: st
     }}
 );
 
-export const deleteTask = createAsyncThunk<  { _id: string; message: string }, Partial<ITask>, { rejectValue: string }>(
+export const deleteTask = createAsyncThunk<  { _id: string; message: string }, string, { rejectValue: string }>(
   'tasks/deleteTask',
   async (_id, thunkAPI) => {
     try {
