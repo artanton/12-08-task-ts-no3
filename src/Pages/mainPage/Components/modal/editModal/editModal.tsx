@@ -5,9 +5,11 @@ import { FC, useState } from 'react';
 import { IeditTaskModal } from '../../../Task.types';
 import { AppDispatch } from '../../../../../redux/store';
 
-
-
-export const EditTaskModal:FC< IeditTaskModal> = ({ _id, text:initialText, onClose }) => {
+export const EditTaskModal: FC<IeditTaskModal> = ({
+  _id,
+  text: initialText,
+  onClose,
+}) => {
   const dispatch = useDispatch<AppDispatch>();
   const [text, setText] = useState(initialText);
 
@@ -16,7 +18,7 @@ export const EditTaskModal:FC< IeditTaskModal> = ({ _id, text:initialText, onClo
     onClose();
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>)=> {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
 
@@ -26,7 +28,7 @@ export const EditTaskModal:FC< IeditTaskModal> = ({ _id, text:initialText, onClo
 
       <form>
         <TextInput
-          name="text"        
+          name="text"
           rows={3}
           value={text}
           onChange={handleChange}
