@@ -67,7 +67,7 @@ export const updateTask = createAsyncThunk<ITask, Partial<ITask>, { rejectValue:
   async ({ _id, text }, thunkAPI) => {
     
     try {
-      const response = await axios.put(`/tasks/${_id}`, { text });
+      const response = await axios.patch(`/tasks/${_id}`, { text });
       return response.data;
     } catch (e: unknown) {
       if (e instanceof Error) {
